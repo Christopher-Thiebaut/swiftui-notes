@@ -28,13 +28,18 @@ struct NoteList : View {
                 List(noteRepository.notes) { note in
                     if self.isEditing {
                         DeleteNotePreview(note: note)
+                            .animation(.basic())
                     } else {
-                        NotePreview(note: note)
+                        NavigationButton(
+                        destination: NoteEditingView(note: note)) {
+                            NotePreview(note: note)
+                        }
+                        .animation(.basic())
+                        
                     }
                     
                 }
             }
-            .textFieldStyle(.roundedBorder)
             .navigationBarTitle(Text("Notes"))
             .navigationBarItems(trailing: Button(
                 action: { self.isEditing.toggle() },

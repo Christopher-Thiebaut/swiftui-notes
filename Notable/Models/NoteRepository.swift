@@ -92,6 +92,7 @@ class CodableNoteStore: NoteStore {
         }
     }
 }
+
 #if DEBUG
 class FakeNoteStore: NoteStore {
     
